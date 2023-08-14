@@ -1,0 +1,17 @@
+# Project:
+project_name: ""
+
+# Environment:
+env: "local"                        # [local, dev, stage, prod]
+server_name: "golang-redis"  # server name
+current_domain: "127.0.0.1:8081"    # for generate links...
+server_timezone: "America/New_York" # for return time in needed timezone
+
+# HTTP settings:
+http:
+  port: "8081"
+
+redis:
+  port: 6379
+
+numConnections: 1
