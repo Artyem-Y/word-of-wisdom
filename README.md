@@ -1,4 +1,4 @@
-# Word of Wisdom Server
+# Word of Wisdom
 
 The Word of Wisdom Server project is a simple server for handling requests with request rate limiting, DDoS protection mechanisms, and Proof of Work validation.
 
@@ -11,6 +11,8 @@ main logic in word-of-wisdom-server:
 - `server/client_tracker.go`
 - `server/connection_limiter.go`
 - ...
+
+client's logic is in word-of-wisdom-client
 
 ## Description
 
@@ -64,7 +66,7 @@ The server then closes the write and read sides of the connection to complete th
 
 ### Running App
 
-To run the app, in in word-of-wisdom use the following command:
+To run the app, in in word-of-wisdom/word-of-wisdom-server use the following command:
 
 ```sh
 make
