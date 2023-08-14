@@ -66,7 +66,7 @@ The server then closes the write and read sides of the connection to complete th
 
 ### Running App
 
-To run the app, in in word-of-wisdom/word-of-wisdom-server use the following command:
+To run the app, in word-of-wisdom/word-of-wisdom-server use the following command:
 
 ```sh
 make
