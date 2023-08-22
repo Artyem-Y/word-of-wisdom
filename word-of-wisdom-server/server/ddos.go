@@ -19,7 +19,7 @@ func StartDDoSMitigation(ddosMitigationChan chan net.IP) {
 	fmt.Println("banDuration: ", banDuration)
 	fmt.Println("blacklist: ", blacklist)
 
-	ticker := time.NewTicker(banDuration) // Создаем метроном, чтобы проверять черный список периодически.
+	ticker := time.NewTicker(banDuration) // Create a ticker to check the blacklist periodically.
 	defer ticker.Stop()
 
 	for {
@@ -38,7 +38,7 @@ func StartDDoSMitigation(ddosMitigationChan chan net.IP) {
 			fmt.Printf("DDoS mitigation applied for IP address: %s\n", ip)
 
 		case <-ticker.C:
-			// Периодически проверяем черный список и удаляем IP-адреса, которые истекли.
+			// Periodically check the blacklist and remove IP addresses that have expired.
 			deleteExpiredIPs()
 		}
 	}

@@ -29,14 +29,29 @@ RUN go test ./... -cover
 RUN CGO_ENABLED=0 GOOS=linux go build -o /main main.go
 
 # Stage 3: Final
-FROM alpine:3
+# Create a minimal production image
+FROM alpine:latest
+
+# It's essential to regularly update the packages within the image to include security patches
+RUN apk update && apk upgrade
+
+# Reduce image size
+RUN rm -rf /var/cache/apk/* && \
+    rm -rf /tmp/*
+
+# Avoid running code as a root user
+RUN adduser -D appuser
+USER appuser
 
 EXPOSE 8080
 WORKDIR /app
 
-COPY --from=builder /main /bin/app
+# Create a writable directory for the binary
+RUN mkdir -p /app/bin
+COPY --from=builder /main /app/bin/app
 COPY quotes.txt /app/quotes.txt
 
-RUN chmod +x /bin/app
+# Make the binary executable
+#RUN chmod +x /app/bin/app
 
-CMD ["sh", "-c", "exec /bin/app"]
+CMD ["/app/bin/app"]

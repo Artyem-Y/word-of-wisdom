@@ -80,7 +80,7 @@ func simulateConnection(connectionID int, wg *sync.WaitGroup) {
 		return
 	}
 
-	// Разделите подтверждение и цитату
+	// Separate confirmation and quote
 	parts := strings.SplitN(confirmationAndQuote, ":", 2)
 	if len(parts) != 2 {
 		fmt.Printf("Connection %d error splitting confirmation and quote: invalid format\n", connectionID)
