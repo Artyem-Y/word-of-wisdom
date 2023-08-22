@@ -48,10 +48,7 @@ WORKDIR /app
 
 # Create a writable directory for the binary
 RUN mkdir -p /app/bin
-COPY --from=builder /main /app/bin/app
+COPY --from=builder /main /bin/app
 COPY quotes.txt /app/quotes.txt
 
-# Make the binary executable
-#RUN chmod +x /app/bin/app
-
-CMD ["/app/bin/app"]
+CMD ["/bin/app"]
